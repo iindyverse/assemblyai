@@ -22,5 +22,9 @@ jobs:
           rebar3-version: ${{matrix.rebar3}}
       - run: gleam deps download
       - run: gleam build --warnings-as-errors
+        env:
+          GLEAM_LOG: trace
       - run: gleam test
+        env:
+          GLEAM_LOG: trace
       - run: gleam format --check src test
