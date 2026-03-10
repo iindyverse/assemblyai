@@ -8,7 +8,7 @@ repository = { type = "github", user = "iindyverse", repo = "assemblyai" }
 links = []
 
 [dependencies]
-gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+gleam_stdlib = ">= 0.44.0 and <= 0.67.1"
 snag = ">= 1.1.0 and < 2.0.0"
 midas = ">= 2.0.0 and < 3.0.0"
 gleam_http = ">= 3.7.2 and < 5.0.0"
