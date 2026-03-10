@@ -1,0 +1,26 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gleam: ["1.13", "1.14"]
+        otp: ["28.2", "28.3"]
+        rebar3: ["3.25"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          gleam-version: ${{matrix.gleam}}
+          rebar3-version: ${{matrix.rebar3}}
+      - run: gleam deps download
+      - run: gleam build --warnings-as-errors
+      - run: gleam test
+      - run: gleam format --check src test
