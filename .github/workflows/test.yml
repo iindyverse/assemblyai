@@ -10,7 +10,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-      matrix:
         gleam: ["1.13", "1.14", "1.15.0-rc1"]
         otp: ["28.2", "28.3", "28.4"]
         rebar3: ["3.25"] 
