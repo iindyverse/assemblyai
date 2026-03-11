@@ -25,10 +25,8 @@ fn handle_errors(response) {
 
 pub fn get_transcript_sentences(token, transcript_id) {
   let request = base_request(token)
-  let request = operations.get_transcript_sentences_request(
-    request,
-    transcript_id,
-  )
+  let request =
+    operations.get_transcript_sentences_request(request, transcript_id)
   use response <- t.do(t.fetch(request))
   use data <- t.try(
     handle_errors(operations.get_transcript_sentences_response(response)),
@@ -51,12 +49,13 @@ pub fn get_subtitles(
   chars_per_caption chars_per_caption,
 ) {
   let request = base_request(token)
-  let request = operations.get_subtitles_request(
-    request,
-    transcript_id,
-    subtitle_format,
-    chars_per_caption,
-  )
+  let request =
+    operations.get_subtitles_request(
+      request,
+      transcript_id,
+      subtitle_format,
+      chars_per_caption,
+    )
   use response <- t.do(t.fetch(request))
   use data <- t.try(handle_errors(operations.get_subtitles_response(response)))
   t.done(data)
@@ -82,10 +81,8 @@ pub fn lemur_summary(token, data) {
 
 pub fn get_transcript_paragraphs(token, transcript_id) {
   let request = base_request(token)
-  let request = operations.get_transcript_paragraphs_request(
-    request,
-    transcript_id,
-  )
+  let request =
+    operations.get_transcript_paragraphs_request(request, transcript_id)
   use response <- t.do(t.fetch(request))
   use data <- t.try(
     handle_errors(operations.get_transcript_paragraphs_response(response)),
@@ -179,15 +176,16 @@ pub fn list_transcripts(
   throttled_only throttled_only,
 ) {
   let request = base_request(token)
-  let request = operations.list_transcripts_request(
-    request,
-    limit,
-    status,
-    created_on,
-    before_id,
-    after_id,
-    throttled_only,
-  )
+  let request =
+    operations.list_transcripts_request(
+      request,
+      limit,
+      status,
+      created_on,
+      before_id,
+      after_id,
+      throttled_only,
+    )
   use response <- t.do(t.fetch(request))
   use data <- t.try(
     handle_errors(operations.list_transcripts_response(response)),
